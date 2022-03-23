@@ -20,9 +20,13 @@ public class RelationalCustomerRepository implements CustomerRepository {
     public Customer create(Customer customer) {
         logger.info("Saving Customer");
 
-        return customerRepositoryJPA
+        var savedCustomer = customerRepositoryJPA
                 .save(new CustomerModel(customer))
                 .toDomain();
+
+        logger.info("Saved Customer - id: {}", savedCustomer.getId());
+
+        return savedCustomer;
 
     }
 }
