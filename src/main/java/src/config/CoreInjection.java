@@ -10,9 +10,7 @@ import src.core.usecase.RegisterNewCustomerUseCase;
 public class CoreInjection {
 
     @Bean
-    public RegisterNewCustomerInputPort registerNewCustomer(
-            SaveCustomerOutputPort saveCustomerOutputPort
-    ) {
+    public RegisterNewCustomerInputPort registerNewCustomer(SaveCustomerOutputPort saveCustomerOutputPort) {
 
         return new RegisterNewCustomerUseCase(saveCustomerOutputPort);
 

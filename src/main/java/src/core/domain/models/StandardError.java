@@ -1,0 +1,22 @@
+package src.core.domain.models;
+
+import lombok.Builder;
+import lombok.Data;
+
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+
+@Data
+@Builder
+public class StandardError {
+
+    private Instant timestamp;
+    private Integer status;
+    private String error;
+    private String message;
+    private String path;
+
+    private Map<String, String> errors = new HashMap<>();
+
+}
