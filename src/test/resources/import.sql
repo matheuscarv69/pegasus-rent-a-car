@@ -1,0 +1,1 @@
+insert into customer(id, name, document) values (100, 'Matheus Carvalho', '42427205052');

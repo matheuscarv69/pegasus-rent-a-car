@@ -2,12 +2,13 @@ package src.core.domain.models;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
-@Data
+@Getter
 @Builder
 public class StandardError {
 

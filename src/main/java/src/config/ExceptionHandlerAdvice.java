@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import src.core.domain.exception.CustomerNotFoundException;
 import src.core.domain.models.StandardError;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,7 @@ public class ExceptionHandlerAdvice {
                 });
 
         var status = HttpStatus.BAD_REQUEST;
-        
+
         var standardError = StandardError
                 .builder()
                 .timestamp(Instant.now())
@@ -52,5 +53,26 @@ public class ExceptionHandlerAdvice {
         return ResponseEntity.status(status).body(standardError);
     }
 
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<?> customerNotFoundExceptionHandler(
+            CustomerNotFoundException exception,
+            HttpServletRequest request
+    ) {
+        var errors = Map.of("CustomerId", exception.getMessage());
+
+        var status = HttpStatus.NOT_FOUND;
+
+        var standardError = StandardError
+                .builder()
+                .timestamp(Instant.now())
+                .status(status.value())
+                .error("Resource Not Found")
+                .message(exception.getMessage())
+                .path(request.getRequestURI())
+                .errors(errors)
+                .build();
+
+        return ResponseEntity.status(status).body(standardError);
+    }
 
 }

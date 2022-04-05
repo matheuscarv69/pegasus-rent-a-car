@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(MockitoExtension.class)
-class CustomerControllerTest {
+class CreateNewCustomerControllerTest {
 
     private static final Long CUSTOMER_ID = 1L;
     private static final String CUSTOMER_NAME = "Matheus Carvalho";
@@ -26,7 +26,7 @@ class CustomerControllerTest {
     private static final String HEADER_LOCATION_EXPECTED = "/customers/1";
 
     @InjectMocks
-    private CustomerController controller;
+    private CreateNewCustomerController controller;
 
     @Mock
     private RegisterNewCustomerUseCase useCase;

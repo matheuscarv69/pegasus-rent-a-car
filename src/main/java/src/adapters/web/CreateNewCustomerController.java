@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/customers")
-public class CustomerController {
+public class CreateNewCustomerController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -40,7 +40,7 @@ public class CustomerController {
                 .toUri();
 
         return ResponseEntity.created(uri).build();
-    }
 
+    }
 
 }

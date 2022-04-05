@@ -11,14 +11,12 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class NewCustomerRequest {
 
-    @NotNull
     @NotBlank
     @Size(max = 100)
     private String name;
 
-    @NotNull
     @NotBlank
-    @Size(min = 11, max = 11)
+    @Size(min = 11, max = 11, message = "tamanho deve ser de 11 caracteres")
     private String document;
 
     public Customer toDomain() {

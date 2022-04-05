@@ -18,8 +18,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(CustomerController.class)
-class CustomerControllerIntegrationTest {
+@WebMvcTest(CreateNewCustomerController.class)
+class CreateNewCustomerControllerIntegrationTest {
 
     private static final String URL = "/customers";
 
@@ -47,8 +47,7 @@ class CustomerControllerIntegrationTest {
                         post(URL)
                                 .content(createNewCustomerJsonRequest())
                                 .contentType(MediaType.APPLICATION_JSON)
-                ).andExpect(status().isCreated())
-                .andExpect(header().stringValues("Location", "http://localhost/customers/1"));
+                ).andExpect(status().isCreated());
 
     }
 
