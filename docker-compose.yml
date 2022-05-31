@@ -2,13 +2,13 @@ version: '3.4'
 
 services:
 
-  spring-boot-admin:
-    image: matheuscarv69/spring-boot-admin-server-arm:2
-    container_name: spring_boot_admin
-    environment:
-      SERVER_PORT: 8081
-    ports:
-      - "8081:8081"
+#  spring-boot-admin:
+#    image: matheuscarv69/spring-boot-admin-server-arm:2
+#    container_name: spring_boot_admin
+#    environment:
+#      SERVER_PORT: 8081
+#    ports:
+#      - "8081:8081"
 
   postgres:
     image: 'postgres:alpine'
@@ -18,3 +18,15 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+
+  prometheus:
+    image: prom/prometheus-linux-arm64:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-volume:/etc/prometheus/
+#        network_mode: bridge
+    ports:
+      - "9090:9090"
+
+volumes:
+  prometheus-volume:
