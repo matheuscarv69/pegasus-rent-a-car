@@ -1,9 +1,9 @@
-version: '3'
+version: '3.4'
 
 services:
 
   spring-boot-admin:
-    image: matheuscarv69/spring-boot-admin-server
+    image: matheuscarv69/spring-boot-admin-server-arm:2
     container_name: spring_boot_admin
     environment:
       SERVER_PORT: 8081
