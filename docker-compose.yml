@@ -28,5 +28,12 @@ services:
     ports:
       - "9090:9090"
 
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+#    12900 - spring boot apm Dashboard for grafana
 volumes:
   prometheus-volume:
